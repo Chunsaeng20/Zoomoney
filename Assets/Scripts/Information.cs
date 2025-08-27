@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using NUnit.Framework.Internal;
 
 [System.Serializable]
 public class Info //json 양식이랑 똑같음
@@ -14,13 +13,27 @@ public class Info //json 양식이랑 똑같음
     public string Type;//정보 종류 (News, Rumor)
     public float Volatility; //주가 변동폭 0~100
     public string Direction; //주가 방향성 (Up, Down)
+
+    public float GetDirection()
+    {
+        if(Direction == "Up")
+        {
+            return 1f;
+        }
+        else
+        {
+            return -1f;
+        }
+    }
 }
-//
+
+
 [System.Serializable]
 public class InfoList
 {
     public List<Info> information;
 }
+
 public class Information : MonoBehaviour
 {
 
