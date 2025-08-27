@@ -1,16 +1,153 @@
+using System;
+using System.Collections.Generic;
+using Unity.Mathematics;
+using UnityEditor.Build.Content;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class Trader : MonoBehaviour
+
+public enum PassiveSkill // 패시브 스킬 종류
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    없음,
+    리스크관리,
+    난딴돈의반만가져가, 
+    관망,
+}
 
-    // Update is called once per frame
-    void Update()
+public enum Trendency // 투자 성향
+{
+    보수적,
+    중립적,
+    공격적
+}
+
+public enum Specialization // 전문 분야
+{
+    IT,
+    유통,
+    엔터
+}
+
+
+[System.Serializable]
+public class TraderInfo // 트레이더의 정보를 담는 클래스
+{
+    public Trendency traderTendency; // 투자 성향
+    public string traderName; // 트레이더 이름
+    public float trendencyPerMoney; // 투자 성향에 따른 투자 비율
+    public Specialization specialization; // 전문 분야
+    public float salary; // 월급
+    public int stamina; // 체력
+    public float confidence; // 신뢰도
+    public float returnOfMoney; // 수익률
+    public PassiveSkill passiveSkill; // 패시브
+    public string skillScript; // 패시브 스킬 설명
+    public float salaryPerSkill; // 월급에 따른 패시브 효과 배율
+    
+    
+    public void setReturnOfMoney() // 수익률 계산
     {
-        
+        //returnOfMoney = math.Round(((금일 가격 - 전 날 가격) / 전 날 가격) * 100, 1); // 수익률 계산
     }
 }
+public class Trader : MonoBehaviour
+{
+    public List<TraderInfo> traderList = new List<TraderInfo>();
+
+    void Start()
+    {
+        generateTraders();
+        generateTraders();
+    }
+
+    void generateTraders()
+    {
+        TraderInfo newTrader = new TraderInfo();
+        // 1. 투자 성향 및 전문 분야 랜덤 설정
+        newTrader.traderName = "트레이더" + (traderList.Count + 1);
+        newTrader.traderTendency = (Trendency)Random.Range(0, 3); //트레이더의 투자 성향 랜덤 설정
+        newTrader.specialization = (Specialization)Random.Range(0, 3); //트레이더의 전문 분야 랜덤 설정
+
+        // 2. 기본 능력치 설정
+        newTrader.salary = Random.Range(3000, 6000);
+        newTrader.stamina = 3; // 범위 0~3
+        newTrader.confidence = 0f; // 범위 0~100
+        newTrader.returnOfMoney = 0f;
+        //newTrader.salaryPerSkill = SetSalaryPerSkill(newTrader); // 월급에 따른 패시브 효과 배율 설정
+
+        // 3. 스킬 랜덤 설정 
+        newTrader.passiveSkill = (PassiveSkill)Random.Range(0, 4); //트레이더의 패시브 랜덤 설정
+        newTrader.skillScript = SkillDescription(newTrader); // 패시브 스킬 설명 설정
+
+        newTrader.trendencyPerMoney = SetMoneyByTrendency(newTrader.traderTendency); // 투자 성향에 따른 투자 금액 비율 설정
+        traderList.Add(newTrader);
+    }
+
+    public float SetMoneyByTrendency(Trendency tr) // 투자 성향에 따른 투자 금액 비율 설정
+    {
+        float tendencyPerMoney = 0f;
+        switch (tr)
+        {
+            case Trendency.보수적:
+                tendencyPerMoney = Random.Range(0f, 0.7f);
+                break;
+            case Trendency.중립적:
+                tendencyPerMoney = Random.Range(0.6f, 1.3f);
+                break;
+            case Trendency.공격적:
+                tendencyPerMoney = Random.Range(1.4f, 2f);
+                break;
+        }
+        tendencyPerMoney = (float)Math.Round(tendencyPerMoney, 1);// 소수점 첫째자리까지 반올림
+        return tendencyPerMoney;
+    }
+
+    public float SkillManagement(TraderInfo tr) // 패시브 스킬에 따른 효과 발동
+    {
+        float effectValue = 0f;
+        switch (tr.passiveSkill)
+        {
+            case PassiveSkill.없음:
+                break;
+            case PassiveSkill.리스크관리:
+                effectValue = 1f;
+                break;
+            case PassiveSkill.난딴돈의반만가져가:
+                effectValue = 0.5f; 
+                break;
+            case PassiveSkill.관망:
+                effectValue = 1f;
+                break;
+        }
+
+        return effectValue;
+    }
+    public string SkillDescription(TraderInfo tr) // 패시브 스킬 설명
+    {
+        string description = "";
+        switch (tr.passiveSkill)
+        {
+            case PassiveSkill.없음:
+                description = "패시브 스킬 없음";
+                break;
+            case PassiveSkill.리스크관리:
+                description = "리스크 관리: 하락장일 경우 손실을 최소화합니다.";
+                break;
+            case PassiveSkill.난딴돈의반만가져가:
+                description = "난딴돈의반만가져가: 상승장일 경우 발동하여 수익의 절반만 가져갑니다.";
+                break;
+            case PassiveSkill.관망:
+                description = "관망 : 주식을 팔지 않고 한턴 더 지켜봅니다.";
+                break;
+        }
+        return description;
+    }
+    
+    // public float SetSalaryPerSkill(TraderInfo tr) // 월급에 따른 패시브 효과 가중치 설정
+    // {
+    //     return (float)Math.Round((tr.salary-4500)/1000,1); 
+    // }
+}
+
+
+
