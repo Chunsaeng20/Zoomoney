@@ -1303,7 +1303,13 @@ MonoBehaviour:
   ResultCanvas: {fileID: 0}
   TraderHireCanvas: {fileID: 0}
   LoadingCanvas: {fileID: 0}
+  PlayPanel: {fileID: 0}
   StartPanel: {fileID: 786939785}
+  InformationPanel: {fileID: 0}
+  TraderSelectPanel: {fileID: 0}
+  ResultPanel: {fileID: 0}
+  TraderHirePanel: {fileID: 0}
+  LoadingPanel: {fileID: 0}
 --- !u!1 &1083939416
 GameObject:
   m_ObjectHideFlags: 0

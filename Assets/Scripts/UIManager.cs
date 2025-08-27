@@ -3,22 +3,6 @@ using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
-    // UI 관리를 위한 메서드
-    // 1. StartCanvas
-    // 화면 전체 클릭
-    // 2. InformaionDeckCanvas
-    // (다음으로 넘어가기) 버튼
-    // 3. TraderDeckSelectCanvas
-    // (다음으로 넘어가기) 버튼
-    // 4. PlayTurnCanvas
-    // (턴 끝내기) 버튼
-    // 5. ResultCanvas
-    // 확인된 정보
-    // (다음으로 넘어가기) 버튼
-    // 6. TraderDeckHireCanvas
-    // (다음으로 넘어가기) 버튼
-    // 7. LoadingCanvas
-
     #region Variables
 
     public GameObject PlayCanvas;
@@ -29,42 +13,80 @@ public class UIManager : MonoBehaviour
     public GameObject TraderHireCanvas;
     public GameObject LoadingCanvas;
 
+    public GameObject PlayPanel;
     public GameObject StartPanel;
+    public GameObject InformationPanel;
+    public GameObject TraderSelectPanel;
+    public GameObject ResultPanel;
+    public GameObject TraderHirePanel;
+    public GameObject LoadingPanel;
 
     #endregion
 
     #region User Methods
+
+    public void ChangeScene(GameObject canvas, GameObject panel, GameObject newCanvas)
+    {
+        // 기존 화면 창 치우기
+        panel.GetComponent<RectTransform>().DOAnchorPosX(-1920f, 1.0f)
+            .OnComplete(() =>
+            {
+                // 캔버스 비활성화 및 원래 위치로
+                canvas.SetActive(false);
+                panel.GetComponent<RectTransform>().DOAnchorPosX(0f, 0f);
+            });
+        // 새로운 화면 띄우기
+        newCanvas.SetActive(true);
+    }
 
     public void LoadCanvas(GameState gameState)
     {
         switch (gameState)
         {
             case GameState.INIT:
-                // 초기 화면 창 로딩하기 -> GM
-                StartPanel.GetComponent<RectTransform>().DOAnchorPosX(-960f, 2f);
                 break;
             case GameState.BEGINTURN:
-                // 정보 선택 창 로딩하기 -> Information 정보 필요
+                ChangeScene(StartCanvas, StartPanel, InformationCanvas);
                 break;
             case GameState.SELECTINFORMATION:
-                // 트레이더 선택 창 로딩하기 -> Trader 정보 필요
+                ChangeScene(InformationCanvas, InformationPanel, TraderSelectCanvas);
                 break;
             case GameState.SELECTTRADER:
-                // 플레이 화면 창 로딩하기 -> GM
+                ChangeScene(TraderSelectCanvas, TraderSelectPanel, PlayCanvas);
                 break;
             case GameState.PLAYTURN:
-                // 결과 화면 창 로딩하기 -> GM
+                ChangeScene(PlayCanvas, PlayPanel, ResultCanvas);
                 break;
             case GameState.RESULT:
-                // 트레이더 고용 창 로딩하기 -> GM
+                ChangeScene(ResultCanvas, ResultPanel, TraderHireCanvas);
                 break;
             case GameState.HIRETRADER:
-                // 다음 턴 로딩 창 로딩하기 -> GM
+                ChangeScene(TraderHireCanvas, TraderHirePanel, InformationCanvas);
                 break;
             case GameState.FINISH:
-                // 메인 화면 창 로딩하기 -> GM
+                ChangeScene(ResultCanvas, ResultPanel, StartCanvas);
                 break;
         }
+    }
+
+    public void Button()
+    {
+
+    }
+
+    #endregion
+
+    #region Unity Methods
+
+    public void Start()
+    {
+        StartCanvas.SetActive(true);
+        PlayCanvas.SetActive(false);
+        InformationCanvas.SetActive(false);
+        TraderSelectCanvas.SetActive(false);
+        ResultCanvas.SetActive(false);
+        TraderHireCanvas.SetActive(false);
+        LoadingCanvas.SetActive(false);
     }
 
     #endregion

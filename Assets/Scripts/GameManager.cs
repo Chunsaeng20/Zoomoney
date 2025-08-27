@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public enum GameState
@@ -6,7 +7,7 @@ public enum GameState
     NONE = 0,
     INIT = 1,               // 초기 시작 화면
     BEGINTURN = 2,          // 턴 시작 전 준비
-    SELECTINFORMATION = 3,  // 정보 카드 선택 단계
+    SELECTINFORMATION = 3,  // 정보 카드 단계
     SELECTTRADER = 4,       // 트레이더 카드 선택 단계
     PLAYTURN = 5,           // 플레이 화면
     RESULT = 6,             // 결과 화면
@@ -42,7 +43,6 @@ public class GameManager : MonoBehaviour
         switch (gameState)
         {
             case GameState.INIT:
-                // 초기 화면 창 로딩하기 -> GM
                 UIManager.LoadCanvas(gameState);
                 gameState = GameState.NONE;
                 break;
@@ -92,17 +92,19 @@ public class GameManager : MonoBehaviour
 
                 // 새로운 트레이더 리스트 생성하기 -> 리스트 반환
 
+
                 // 트레이더 고용 창 로딩하기 -> GM
 
                 // 게임 상태 변이
                 gameState = GameState.HIRETRADER;
                 break;
             case GameState.HIRETRADER:
-                // 1. 새로운 트레이더 리스트 받기
-                // 고용한 트레이더 저장하기 -> GM
-
-                // 2. 기존 트레이더 리스트 받기
-                // 해고한 트레이더 삭제하기 -> GM
+                // 새로운 트레이더 생성
+                List<TraderInfo> newTraderList = trader.TwoInfoGenerate();
+                // 트레이더 고용
+                trader.enterTheTraderList();
+                // 트레이더 해고
+                trader.HireTheTraderList();
 
                 // 다음 턴 로딩 창 로딩하기 -> GM
 
@@ -262,11 +264,6 @@ public class GameManager : MonoBehaviour
     public void OnValidate()
     {
         gameState = GameState.INIT;
-    }
-
-    public void Update()
-    {
-        ManageTurn();
     }
 
     #endregion
