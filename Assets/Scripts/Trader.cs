@@ -53,8 +53,10 @@ public class TraderInfo // 트레이더의 정보를 담는 클래스
 }
 public class Trader : MonoBehaviour
 {
-    
+
     public List<TraderInfo> traderList = new List<TraderInfo>();
+    public List<TraderInfo> tr2 = new List<TraderInfo>();
+
 
     void Start()
     {
@@ -87,6 +89,7 @@ public class Trader : MonoBehaviour
         newTrader.confidence = 0f; // 범위 0~100
         newTrader.returnOfMoney = 0f;
         return newTrader;
+
     }
 
     public float SetMoneyByTrendency(Trendency tr) // 투자 성향에 따른 투자 금액 비율 설정
@@ -115,7 +118,7 @@ public class Trader : MonoBehaviour
         {
             case PassiveSkill.없음:
                 break;
-            case PassiveSkill.월급값은해야지:
+            case PassiveSkill.허약:
                 break;
             case PassiveSkill.난딴돈의반만가져가:
                 effectValue = 0.5f;
@@ -150,7 +153,7 @@ public class Trader : MonoBehaviour
 
     public List<TraderInfo> TwoInfoGenerate() //두 명의 트레이더 정보를 리스트에 담아 반환
     {
-        List<TraderInfo> tr2 = new List<TraderInfo>();
+        tr2 = new List<TraderInfo>();
         tr2.Add(generateTraders());
         tr2.Add(generateTraders());
         tr2[0].isHire = false;
@@ -158,6 +161,27 @@ public class Trader : MonoBehaviour
         return tr2;
     }
 
+    public void enterTheTraderList()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            if (tr2[i].isHire)
+            {
+                traderList.Add(tr2[i]);
+            }
+        }
+    }
+
+    public void HireTheTraderList()
+    {
+        for (int i = 0; i < traderList.Count; i++)
+        {
+            if (traderList[i].isHire)
+            {
+                traderList.RemoveAt(i);
+            }
+        }
+    }
    
 }
 
