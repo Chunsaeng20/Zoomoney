@@ -43,6 +43,8 @@ public class TraderInfo // 트레이더의 정보를 담는 클래스
     public PassiveSkill passiveSkill; // 패시브
     public string skillScript; // 패시브 스킬 설명
     public float salaryPerSkill; // 월급에 따른 패시브 효과 배율
+    public bool isParticipate; // 참여 여부
+    public bool isHire; // 고용여부
     
     
     public void setReturnOfMoney() // 수익률 계산
@@ -56,11 +58,10 @@ public class Trader : MonoBehaviour
 
     void Start()
     {
-        generateTraders();
-        generateTraders();
+        AddList(traderList);
     }
 
-    void generateTraders()
+    public TraderInfo generateTraders()
     {
         TraderInfo newTrader = new TraderInfo();
         // 1. 투자 성향 및 전문 분야 랜덤 설정
@@ -78,9 +79,14 @@ public class Trader : MonoBehaviour
         // 3. 스킬 랜덤 설정 
         newTrader.passiveSkill = (PassiveSkill)Random.Range(0, 4); //트레이더의 패시브 랜덤 설정
         newTrader.skillScript = SkillDescription(newTrader); // 패시브 스킬 설명 설정
-
+        newTrader.isHire = true;
+        newTrader.isParticipate = false;
         newTrader.trendencyPerMoney = SetMoneyByTrendency(newTrader.traderTendency); // 투자 성향에 따른 투자 금액 비율 설정
-        traderList.Add(newTrader);
+        return newTrader;
+    }
+
+    public void AddList(List<TraderInfo> tr) {
+        tr.Add(generateTraders());
     }
 
     public float SetMoneyByTrendency(Trendency tr) // 투자 성향에 따른 투자 금액 비율 설정
@@ -113,7 +119,7 @@ public class Trader : MonoBehaviour
                 effectValue = 1f;
                 break;
             case PassiveSkill.난딴돈의반만가져가:
-                effectValue = 0.5f; 
+                effectValue = 0.5f;
                 break;
             case PassiveSkill.관망:
                 effectValue = 0f;
@@ -142,7 +148,17 @@ public class Trader : MonoBehaviour
         }
         return description;
     }
-    
+
+    public List<TraderInfo> TwoInfoGenerate() //두 명의 트레이더 정보를 리스트에 담아 반환
+    {
+        List<TraderInfo> tr2 = new List<TraderInfo>();
+        tr2.Add(generateTraders());
+        tr2.Add(generateTraders());
+        tr2[0].isHire = false;
+        tr2[1].isHire = false;
+        return tr2;
+    }
+
     // public float SetSalaryPerSkill(TraderInfo tr) // 월급에 따른 패시브 효과 가중치 설정
     // {
     //     return (float)Math.Round((tr.salary-4500)/1000,1); 
