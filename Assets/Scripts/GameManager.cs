@@ -1,16 +1,17 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum GameState
 {
-    INIT = 0,               // 초기 시작 화면
-    BEGINTURN = 1,          // 턴 시작 전 준비
-    SELECTINFORMATION = 2,  // 정보 카드 선택 단계
-    SELECTTRADER = 3,       // 트레이더 카드 선택 단계
-    PLAYTURN = 4,           // 플레이 화면
-    RESULT = 5,             // 결과 화면
-    HIRETRADER = 6,         // 트레이더 고용 단계
-    FINISH = 7,             // 엔딩
-    NONE = 8,
+    NONE = 0,
+    INIT = 1,               // 초기 시작 화면
+    BEGINTURN = 2,          // 턴 시작 전 준비
+    SELECTINFORMATION = 3,  // 정보 카드 선택 단계
+    SELECTTRADER = 4,       // 트레이더 카드 선택 단계
+    PLAYTURN = 5,           // 플레이 화면
+    RESULT = 6,             // 결과 화면
+    HIRETRADER = 7,         // 트레이더 고용 단계
+    FINISH = 8,             // 엔딩
 }
 
 public class GameManager : MonoBehaviour
@@ -42,7 +43,6 @@ public class GameManager : MonoBehaviour
         {
             case GameState.INIT:
                 // 초기 화면 창 로딩하기 -> GM
-                Debug.Log("call");
                 UIManager.LoadCanvas(gameState);
                 gameState = GameState.NONE;
                 break;
@@ -121,60 +121,118 @@ public class GameManager : MonoBehaviour
     // (메인 로직) 주식의 새로운 가격 계산
     public void CalculateNewStockPrice()
     {
-        // 이전 주식 가격
-        float previousStockPrice = 0;
-
-        // 방향성 <- Information
-        float direction = 0;
-
-        // 변동폭 <- Information
-        float volatilityRatio = 0;
-
-        // 가격 변동량
-        float priceChange = previousStockPrice * direction * volatilityRatio;
-
-        // 새로운 가격
-        float newStockPrice = previousStockPrice + priceChange;
-
-        // 가격이 0 이하로 내려가지 않도록 보정
-        if(newStockPrice < 0)
+        // 모든 주식 순회
+        foreach (StockInformation stockInformation in stock.stockList)
         {
-            newStockPrice = 0;
+            // 주식 이름 조회
+            string stockName = stockInformation.ID;
+
+            // 이전 주식 가격 조회
+            float previousStockPrice = stockInformation.PreviousStockPrice[stock.stockList.Count - 1];
+
+            // 현재 턴 주식 정보 조회
+            float direction = 0f;
+            float volatility = 0f;
+            foreach (Info info in information.allInformation)
+            {
+                if(info.Corporation == stockName)
+                {
+                    // 방향성
+                    direction = info.GetDirection();
+                    // 변동폭
+                    volatility = info.Volatility;
+                }
+            }
+
+            // 가격 변동량 계산
+            float priceChange = previousStockPrice * direction * volatility;
+
+            // 새로운 가격 계산
+            float newStockPrice = previousStockPrice + priceChange;
+
+            // 가격이 0 이하로 내려가지 않도록 보정
+            if(newStockPrice < 0)
+            {
+                newStockPrice = 0;
+            }
+
+            // 새로운 가격 정보 저장
+            stockInformation.ReplaceCurrentStockPrice(newStockPrice);
         }
     }
 
-    // (메인 로직) 트레이더의 현재 턴 수익 계산
-    public void CalculateTraderCurrentTurnProfit()
+    // (메인 로직) 플레이어와 트레이더의 현재 턴 수익 계산
+    public void CalculateCurrentTurnProfit()
     {
-        float currentTurnProfit = 0;
+        // 플레이어의 현재 턴 수익
+        float currentTurnPlayerProfit = 0f;
 
-        // 1. 신뢰도 돌림판 -> 포텐 터지면 새로운 가격 무시하고 무조건 2배 이상 (최대 10배)
-        float trust = 20;
-        float potential = Random.Range(0f, 100f);
-        if(trust >= potential)
+        // 모든 트레이더 순회
+        foreach(TraderInfo traderInfo in trader.traderList)
         {
-            currentTurnProfit = 100;
-            return;
+            // 현재 턴에 참여한 트레이터만 수익 계산
+            if(traderInfo.isParticipate)
+            {
+                // 트레이더의 현재 턴 수익
+                float currentTurnProfit = 0f;
+
+                // 전문 분야
+                Sectors sector = traderInfo.sector;
+                List<StockInformation> stockBuyList = new List<StockInformation>();
+                foreach(StockInformation stockInformation in stock.stockList)
+                {
+                    // 해당되는 주식 정보 수집
+                    if(sector == stockInformation.Sector)
+                    {
+                        stockBuyList.Add(stockInformation);
+                    }
+                }
+
+                // 투자 성향
+                float invest = traderInfo.trendencyPerMoney;
+
+                // 각 주식을 살지말지 결정
+                foreach (StockInformation stockInformation in stockBuyList)
+                {
+                    // 투자 성향이 0에 가까울수록 살 확률이 0
+                    // 투자 성향이 2에 가까울수록 살 확률이 100
+                    float exponent = 0f;
+                    if(invest < 1.0f)
+                    {
+                        exponent = 1.0f / (1.0f - invest + 0.001f);
+                    }
+                    else
+                    {
+                        exponent = 1.0f - (invest - 1.0f);
+                    }
+
+                    // 확률에 따라 현재 주식으로 수익을 냄
+                    float buyChance = Mathf.Pow(Random.value, exponent);
+                    buyChance *= 100f;
+                    if(buyChance >= Random.Range(0f, 100f))
+                    {
+                        currentTurnProfit += (stockInformation.CurrentStockPrice - stockInformation.PreviousStockPrice[stockInformation.PreviousStockPrice.Count - 1]);
+                    }
+                }
+
+                // 투자 성향을 수익에 곱함
+                currentTurnProfit *= invest;
+
+                // 스킬 효과
+                float skillEffect = trader.SkillManagement(traderInfo);
+                currentTurnProfit *= skillEffect;
+
+                // 신뢰도에 따라 확률적으로 수익 대박이 터짐
+                float trust = traderInfo.confidence;
+                if(trust >= Random.Range(0f, 100f))
+                {
+                    currentTurnProfit = Mathf.Abs(currentTurnProfit);
+                    currentTurnProfit *= Random.Range(2f, 10f);
+                }
+
+                currentTurnPlayerProfit += currentTurnProfit;
+            }
         }
-
-        // 2. 전문 분야 -> 주식 검색 및 선택 -> 해당 주식의 이전 가격 및 새로운 가격 가져옴
-        float previousStockPrice = 0;
-        float newStockPrice = 0;
-        currentTurnProfit = newStockPrice - previousStockPrice;
-
-        // 3. 투자 성향 -> 0 ~ 2배율
-        float invest = 1f;
-        currentTurnProfit *= invest;
-
-        // 4. 스킬 -> 
-        float skill = 1f;
-        currentTurnProfit *= skill;
-    }
-
-    // (메인 로직) 플레이어의 현재 턴 수익 계산
-    public void CalculatePlayerCurrentTurnProfit()
-    {
-
     }
 
     // (턴 로직) 게임 오버 여부 확인

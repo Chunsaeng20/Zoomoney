@@ -1,5 +1,5 @@
-using System.Collections;
 using UnityEngine;
+using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
@@ -29,6 +29,8 @@ public class UIManager : MonoBehaviour
     public GameObject TraderHireCanvas;
     public GameObject LoadingCanvas;
 
+    public GameObject StartPanel;
+
     #endregion
 
     #region User Methods
@@ -39,6 +41,7 @@ public class UIManager : MonoBehaviour
         {
             case GameState.INIT:
                 // 초기 화면 창 로딩하기 -> GM
+                StartPanel.GetComponent<RectTransform>().DOAnchorPosX(-960f, 2f);
                 break;
             case GameState.BEGINTURN:
                 // 정보 선택 창 로딩하기 -> Information 정보 필요

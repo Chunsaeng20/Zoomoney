@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.Mathematics;
-using UnityEditor.Build.Content;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -21,13 +19,6 @@ public enum Trendency // 투자 성향
     공격적
 }
 
-public enum Specialization // 전문 분야
-{
-    IT,
-    유통,
-    엔터
-}
-
 
 [System.Serializable]
 public class TraderInfo // 트레이더의 정보를 담는 클래스
@@ -35,7 +26,7 @@ public class TraderInfo // 트레이더의 정보를 담는 클래스
     public Trendency traderTendency; // 투자 성향
     public string traderName; // 트레이더 이름
     public float trendencyPerMoney; // 투자 성향에 따른 투자 비율
-    public Specialization specialization; // 전문 분야
+    public Sectors sector; // 전문 분야
     public float salary; // 월급
     public int stamina; // 체력
     public float confidence; // 신뢰도
@@ -69,7 +60,7 @@ public class Trader : MonoBehaviour
         // 1. 투자 성향 및 전문 분야 랜덤 설정
         newTrader.traderName = "트레이더" + (traderList.Count + 1);
         newTrader.traderTendency = (Trendency)Random.Range(0, 3); //트레이더의 투자 성향 랜덤 설정
-        newTrader.specialization = (Specialization)Random.Range(0, 3); //트레이더의 전문 분야 랜덤 설정
+        newTrader.sector = (Sectors)Random.Range(0, 3); //트레이더의 전문 분야 랜덤 설정
         // 2. 스킬 랜덤 설정 
         newTrader.passiveSkill = (PassiveSkill)Random.Range(0, 4); //트레이더의 패시브 랜덤 설정
         newTrader.skillScript = SkillDescription(newTrader); // 패시브 스킬 설명 설정
