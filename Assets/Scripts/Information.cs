@@ -23,8 +23,6 @@ public class InfoList
 }
 public class Information : MonoBehaviour
 {
-    //json파일 경로
-    private string jsonFilePath = "Assets/Scripts/InformationData.json";
 
     //한 턴에 제공할 정보의 개수
     public int InfoPerTurn = 5;
@@ -82,12 +80,20 @@ public class Information : MonoBehaviour
     public List<Info> TestGetRandomInformation()
     {
         var result = GetRandomInformation();
-        Debug.Log("TestGetRandomInformation");
+        Debug.Log($"--- 테스트 결과: {result.Count}개의 정보 ---");
+        foreach (var info in result)
+        {
+            // 각 정보(info)의 헤드라인을 개별적으로 출력합니다.
+            Debug.Log($"회사: {info.Coperation}, 헤드라인: {info.HeadLine}");
+        }
+        
         return result;
     }
-    //test
+    /*
+    test
     void Start()
     {
         TestGetRandomInformation();
     }
+    */
 }
