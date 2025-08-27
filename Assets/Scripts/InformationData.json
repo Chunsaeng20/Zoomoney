@@ -1,0 +1,52 @@
+{
+    "information":[
+        {
+            "Coperation":"A회사",
+            "HeadLine":"A회사 배임/횡령으로 압수수색", 
+            "Content":"A회사의 경영진이 배임 및 횡령 혐의로 검찰의 압수수색을 받았습니다.",
+            "Type":"News",
+            "Volatility":50.72,
+            "Direction":"Down"
+        },
+        {
+            "Coperation":"B회사",
+            "HeadLine":"(IT) B회사, 신기술 발표", 
+            "Content":"B회사가 새로운 ZPU '캣-텐서 코어'를 발표했습니다.",
+            "Type":"News",
+            "Volatility":81.2,
+            "Direction":"Up"
+        },
+        {
+            "Coperation":"C회사",
+            "HeadLine":"(유통) C회사, 생산량 조정 회의 예고", 
+            "Content":"C회사에서 생산량 조정 회의를 예고했습니다.",
+            "Type":"Rumor",
+            "Volatility":95.07,
+            "Direction":"Up"
+        },
+        {
+            "Coperation":"A회사",
+            "HeadLine":"A회사, 신규 공장 건설 발표", 
+            "Content":"A회사가 새로운 공장 건설을 발표했습니다.",
+            "Type":"News",
+            "Volatility":60.5,
+            "Direction":"Up"
+        },
+        {
+            "Coperation":"B회사",
+            "HeadLine":"B회사 건물 화재 발생", 
+            "Content":"B회사가 건물 화재로 생산 라인 일부 정지.",
+            "Type":"Rumor",
+            "Volatility":15.0,
+            "Direction":"Up"
+        },
+        {
+            "Coperation":"C회사",
+            "HeadLine":"C회사, 경영권 분쟁 조짐", 
+            "Content":"C회사가 최대주주간 경영권 분쟁 조짐을 보이고 있습니다.",
+            "Type":"Rumor",
+            "Volatility":95.07,
+            "Direction":"Up"
+        }
+    ]
+}
