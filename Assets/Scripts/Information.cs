@@ -6,7 +6,7 @@ using System.Linq;
 [System.Serializable]
 public class Info //json 양식이랑 똑같음
 {
-    public string Coperation; // 기업명
+    public string Corporation; // 기업명
     public string HeadLine; //정보 제목
     public string Content; //정보 내용
 
@@ -72,8 +72,8 @@ public class Information : MonoBehaviour
             return new List<Info>();
         }
 
-        // 1. 회사 이름(Coperation)을 기준으로 모든 정보를 그룹화합니다.
-        var infoByCompany = allInformation.GroupBy(info => info.Coperation);
+        // 1. 회사 이름(Corporation)을 기준으로 모든 정보를 그룹화합니다.
+        var infoByCompany = allInformation.GroupBy(info => info.Corporation);
 
         var resultList = new List<Info>();
 
@@ -97,7 +97,7 @@ public class Information : MonoBehaviour
         foreach (var info in result)
         {
             // 각 정보(info)의 헤드라인을 개별적으로 출력합니다.
-            Debug.Log($"회사: {info.Coperation}, 헤드라인: {info.HeadLine}");
+            Debug.Log($"회사: {info.Corporation}, 헤드라인: {info.HeadLine}");
         }
         
         return result;
