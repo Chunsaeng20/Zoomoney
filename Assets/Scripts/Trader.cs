@@ -115,7 +115,7 @@ public class Trader : MonoBehaviour
         {
             case PassiveSkill.없음:
                 break;
-            case PassiveSkill.월급값은해야지:
+            case PassiveSkill.허약:
                 break;
             case PassiveSkill.난딴돈의반만가져가:
                 effectValue = 0.5f;
