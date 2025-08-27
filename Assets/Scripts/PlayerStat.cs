@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class PlayerStat : MonoBehaviour
 {
-    public int totalMoney = 0;
+    public int totalMoney = 100000;
     //스킬 1 회식 : 트레이더들 스테미너 증가
     
     public Trader traderManager;
+    public Information informationManager;
     public void CompanyDinner()
     {
         int staminaIncrease = 1;
@@ -23,8 +24,14 @@ public class PlayerStat : MonoBehaviour
             }
         }
     }
-    //스킬 2 : 다음 턴 정보의 질 향상
-    
-    //스킬 3 : 기도
-
+    //스킬 2 : 다음 턴 정보의 질 향상 -> 다음 턴 정보는 뉴스만 보여주기
+    public void NoRumor()
+    {
+        informationManager.OnlyNews = true; // 다음 턴 정보는 뉴스만 보여주기
+    }
+    //스킬 3 : 반전 -> 이번 턴에 
+    public void Reverse()
+    {
+        
+    }
 }
