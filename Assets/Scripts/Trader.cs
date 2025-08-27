@@ -116,7 +116,7 @@ public class Trader : MonoBehaviour
                 effectValue = 0.5f; 
                 break;
             case PassiveSkill.관망:
-                effectValue = 1f;
+                effectValue = 0f;
                 break;
         }
 
