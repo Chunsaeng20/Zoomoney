@@ -31,6 +31,7 @@ public class UIManager : MonoBehaviour
 
     public GameObject StartPanel;
 
+    public GameObject ScenarioCanvas;
     #endregion
 
     #region User Methods
