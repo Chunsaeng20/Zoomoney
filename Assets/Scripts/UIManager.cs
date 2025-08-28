@@ -142,7 +142,7 @@ public class UIManager : MonoBehaviour
         bool alreadySelected = false;
         foreach (TraderInfo trader in traderList)
         {
-            if (trader.isParticipate)
+            if (trader.flag == TraderFlag.SELECT)
             {
                 participateNumber++;
             }
@@ -159,7 +159,7 @@ public class UIManager : MonoBehaviour
         {
             if(name == trader.traderName)
             {
-                trader.isParticipate = !trader.isParticipate;
+                trader.flag = TraderFlag.SELECT;
                 break;
             }
         }
@@ -173,13 +173,12 @@ public class UIManager : MonoBehaviour
         {
             if(name == trader.traderName)
             {
-                alreadyHired = trader.isHire;
+                alreadyHired = trader.flag == TraderFlag.HIRE;
                 if(gameManager.trader.traderList.Count == gameManager.MaxTraderNumber
                     && alreadyHired == false)
                 {
                     return;
                 }
-                trader.isHire = !trader.isHire;
             }
         }
     }
@@ -190,12 +189,14 @@ public class UIManager : MonoBehaviour
 
     public void Start()
     {
+        /*
         StartCanvas.SetActive(true);
         PlayCanvas.SetActive(false);
         InformationCanvas.SetActive(false);
         TraderSelectCanvas.SetActive(false);
         ResultCanvas.SetActive(false);
         TraderHireCanvas.SetActive(false);
+        */
     }
 
     #endregion

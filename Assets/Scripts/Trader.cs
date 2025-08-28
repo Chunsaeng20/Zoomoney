@@ -19,6 +19,14 @@ public enum Trendency // 투자 성향
     공격적
 }
 
+public enum TraderFlag
+{
+    NONE = 0,
+    SELECT = 1,
+    HIRE = 2,
+    FIRE = 3,
+}
+
 
 [System.Serializable]
 public class TraderInfo // 트레이더의 정보를 담는 클래스
@@ -33,8 +41,7 @@ public class TraderInfo // 트레이더의 정보를 담는 클래스
     public float profit; // 수익
     public PassiveSkill passiveSkill; // 패시브
     public string skillScript; // 패시브 스킬 설명
-    public bool isParticipate; // 참여 여부
-    public bool isHire; // 고용여부
+    public TraderFlag flag;
 }
 public class Trader : MonoBehaviour
 {
@@ -60,8 +67,7 @@ public class Trader : MonoBehaviour
         // 2. 스킬 랜덤 설정 
         newTrader.passiveSkill = (PassiveSkill)Random.Range(0, 4); //트레이더의 패시브 랜덤 설정
         newTrader.skillScript = SkillDescription(newTrader); // 패시브 스킬 설명 설정
-        newTrader.isHire = true;
-        newTrader.isParticipate = false;
+        newTrader.flag = TraderFlag.NONE;
         newTrader.trendencyPerMoney = SetMoneyByTrendency(newTrader.traderTendency); // 투자 성향에 따른 투자 금액 비율 설정
 
         // 3. 기본 능력치 설정
@@ -144,27 +150,25 @@ public class Trader : MonoBehaviour
         tr2 = new List<TraderInfo>();
         tr2.Add(generateTraders());
         tr2.Add(generateTraders());
-        tr2[0].isHire = false;
-        tr2[1].isHire = false;
         return tr2;
     }
 
-    public void enterTheTraderList()
+    public void HireTheTraderList()
     {
         for (int i = 0; i < 2; i++)
         {
-            if (tr2[i].isHire)
+            if (tr2[i].flag == TraderFlag.HIRE)
             {
                 traderList.Add(tr2[i]);
             }
         }
     }
 
-    public void HireTheTraderList()
+    public void FireTheTraderList()
     {
         for (int i = 0; i < traderList.Count; i++)
         {
-            if (traderList[i].isHire)
+            if (traderList[i].flag == TraderFlag.FIRE)
             {
                 traderList.RemoveAt(i);
             }
