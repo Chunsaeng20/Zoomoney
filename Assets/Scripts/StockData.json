@@ -1,0 +1,145 @@
+{
+    "stocks":[
+        {
+            "ID": "냥비디아",
+            "Sector": 0,
+            "PreviousStockPrice": [0,0,0],
+            "CurrentStockPrice": 0,
+            "initialStockPrice": 40000 
+        },
+        {
+            "ID": "팔란디어",
+            "Sector": 0,
+            "PreviousStockPrice": [0,0,0],
+            "CurrentStockPrice": 0,
+            "initialStockPrice": 32000
+        },
+        {
+            "ID": "버드미사일",
+            "Sector": 0,
+            "PreviousStockPrice": [0,0,0],
+            "CurrentStockPrice": 0,
+            "initialStockPrice": 64000
+        },
+        {
+            "ID": "하마존",
+            "Sector": 0,
+            "PreviousStockPrice": [0,0,0],
+            "CurrentStockPrice": 0,
+            "initialStockPrice": 230000
+        }, 
+        {
+            "ID": "구슬",
+            "Sector": 0,
+            "PreviousStockPrice": [0,0,0],
+            "CurrentStockPrice": 0,
+            "initialStockPrice": 290000
+        },
+        {
+            "ID": "티렉슬라",
+            "Sector": 0,
+            "PreviousStockPrice": [0,0,0],
+            "CurrentStockPrice": 0,
+            "initialStockPrice": 432000
+        },
+        {
+            "ID": "오리클",
+            "Sector": 0,
+            "PreviousStockPrice": [0,0,0],
+            "CurrentStockPrice": 0,
+            "initialStockPrice": 311000
+        },
+        {
+            "ID": "우베어",
+            "Sector": 0,
+            "PreviousStockPrice": [0,0,0],
+            "CurrentStockPrice": 0,
+            "initialStockPrice": 125000
+        },
+        {
+            "ID": "네이벌",
+            "Sector": 0,
+            "PreviousStockPrice": [0,0,0],
+            "CurrentStockPrice": 0,
+            "initialStockPrice": 232000
+        },
+        {
+            "ID": "웨일인터넷",
+            "Sector": 0,
+            "PreviousStockPrice": [0,0,0],
+            "CurrentStockPrice": 0,
+            "initialStockPrice": 192000
+        },
+        {
+            "ID": "왈마트",
+            "Sector": 1,
+            "PreviousStockPrice": [0,0,0],
+            "CurrentStockPrice": 0,
+            "initialStockPrice": 192000
+        },
+        {
+            "ID": "코카코알라",
+            "Sector": 1,
+            "PreviousStockPrice": [0,0,0],
+            "CurrentStockPrice": 0,
+            "initialStockPrice": 95000
+        },
+        {
+            "ID": "나이키위",
+            "Sector": 1,
+            "PreviousStockPrice": [0,0,0],
+            "CurrentStockPrice": 0,
+            "initialStockPrice": 128000
+        },
+        {
+            "ID": "신세개",
+            "Sector": 1,
+            "PreviousStockPrice": [0,0,0],
+            "CurrentStockPrice": 0,
+            "initialStockPrice": 400000
+        },
+        {
+            "ID": "버드택배",
+            "Sector": 1,
+            "PreviousStockPrice": [0,0,0],
+            "CurrentStockPrice": 0,
+            "initialStockPrice": 32000
+        },
+        {
+            "ID": "ZYP",
+            "Sector": 2,
+            "PreviousStockPrice": [0,0,0],
+            "CurrentStockPrice": 0,
+            "initialStockPrice": 73000
+        },
+        {
+            "ID": "디쥐니",
+            "Sector": 2,
+            "PreviousStockPrice": [0,0,0],
+            "CurrentStockPrice": 0,
+            "initialStockPrice": 173000
+        },
+        {
+            "ID": "넷폭스",
+            "Sector": 2,
+            "PreviousStockPrice": [0,0,0],
+            "CurrentStockPrice": 0,
+            "initialStockPrice": 921000
+        },
+        {
+            "ID": "YZ",
+            "Sector": 2,
+            "PreviousStockPrice": [0,0,0],
+            "CurrentStockPrice": 0,
+            "initialStockPrice": 24000
+        },
+        {
+            "ID": "하이비",
+            "Sector": 2,
+            "PreviousStockPrice": [0,0,0],
+            "CurrentStockPrice": 0,
+            "initialStockPrice": 221000
+        }
+        
+    ]
+}
