@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 
 public enum GameState
@@ -24,6 +23,8 @@ public class GameManager : MonoBehaviour
     public Trader trader;
     public PlayerStat playerStat;
     public Information information;
+    public int MaxTraderNumber = 12;
+    public int MaxTraderSelect = 6;
 
     // 턴 관리를 위한 변수
     public int currentTurn;         // 현재 턴 수
@@ -175,6 +176,9 @@ public class GameManager : MonoBehaviour
             // 현재 턴에 참여한 트레이터만 수익 계산
             if(traderInfo.isParticipate)
             {
+                // 트레이더의 체력 감소
+                traderInfo.stamina -= 1;
+
                 // 트레이더의 현재 턴 수익
                 float currentTurnProfit = 0f;
 
@@ -232,9 +236,12 @@ public class GameManager : MonoBehaviour
                     currentTurnProfit *= Random.Range(2f, 10f);
                 }
 
+                // 현재 턴 플레이어 수익에 더함
                 currentTurnPlayerProfit += currentTurnProfit;
             }
         }
+
+
     }
 
     // (턴 로직) 게임 오버 여부 확인
