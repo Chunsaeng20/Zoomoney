@@ -64,6 +64,12 @@ public class Stock : MonoBehaviour
             stockList = loadedData.stocks;
 
             Debug.Log("JSON file loaded successfully. " + stockList.Count + " stock items loaded.");
+
+            // 초기화
+            foreach(StockInformation i in stockList)
+            {
+                i.Flush();
+            }
         }
         else
         {
