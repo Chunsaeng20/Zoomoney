@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 52cb6d00c48f8eb458799a2d0f212eaf
+guid: 27a0bc6b3b0359b488b3f45574c3d324
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4832504461538569561
-    second: BigMonitor_0
+      213: 3312056628666419309
+    second: BadEffect_0
+  - first:
+      213: -3653809836708581412
+    second: BadEffect_1
+  - first:
+      213: -6997676031598861445
+    second: BadEffect_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BigMonitor_0
+      name: BadEffect_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 60
-        height: 84
+        x: 2
+        y: 4
+        width: 9
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,96 +121,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7a2d082cbce7fecb0800000000000000
-      internalID: -4832504461538569561
+      spriteID: d68c3aba4f9c6fd20800000000000000
+      internalID: 3312056628666419309
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BigMonitor_1
+      name: BadEffect_1
       rect:
         serializedVersion: 2
-        x: 60
-        y: 0
-        width: 60
-        height: 84
+        x: 19
+        y: 2
+        width: 9
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 8a0b63c66601ee34b993e9023442684e
-      internalID: -1047149846
+      spriteID: cdf282eef4f0b4dc0800000000000000
+      internalID: -3653809836708581412
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BigMonitor_2
+      name: BadEffect_2
       rect:
         serializedVersion: 2
-        x: 120
-        y: 0
-        width: 60
-        height: 84
+        x: 36
+        y: 2
+        width: 8
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 280203cb2e220eb4cbe682f762ecadd9
-      internalID: 453080946
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BigMonitor_3
-      rect:
-        serializedVersion: 2
-        x: 180
-        y: 0
-        width: 60
-        height: 84
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 826efa336fd9a0c4a843fcd6cf3e1f86
-      internalID: -1373367680
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BigMonitor_4
-      rect:
-        serializedVersion: 2
-        x: 240
-        y: 0
-        width: 60
-        height: 84
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2077584addc5b97428160ed44bc1dbee
-      internalID: 1794458993
+      spriteID: b73e84b79b243ee90800000000000000
+      internalID: -6997676031598861445
       vertices: []
       indices: 
       edges: []
@@ -213,7 +175,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: b776bb7c8e028ee4fb8f04af965c9d98
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -223,11 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      BigMonitor_0: -4832504461538569561
-      BigMonitor_1: -1047149846
-      BigMonitor_2: 453080946
-      BigMonitor_3: -1373367680
-      BigMonitor_4: 1794458993
+      BadEffect_0: 3312056628666419309
+      BadEffect_1: -3653809836708581412
+      BadEffect_2: -6997676031598861445
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
