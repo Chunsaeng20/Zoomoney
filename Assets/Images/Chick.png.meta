@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 52cb6d00c48f8eb458799a2d0f212eaf
+guid: b7097ac41cfbefb458e4a471e93d1d84
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4832504461538569561
-    second: BigMonitor_0
+      213: 3049703459977841537
+    second: Chick_0
+  - first:
+      213: 6305517289807938008
+    second: Chick_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BigMonitor_0
+      name: Chick_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 5
         y: 0
-        width: 60
-        height: 84
+        width: 23
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,96 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7a2d082cbce7fecb0800000000000000
-      internalID: -4832504461538569561
+      spriteID: 18b424a8329b25a20800000000000000
+      internalID: 3049703459977841537
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BigMonitor_1
+      name: Chick_1
       rect:
         serializedVersion: 2
-        x: 60
+        x: 37
         y: 0
-        width: 60
-        height: 84
+        width: 26
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 8a0b63c66601ee34b993e9023442684e
-      internalID: -1047149846
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BigMonitor_2
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 0
-        width: 60
-        height: 84
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 280203cb2e220eb4cbe682f762ecadd9
-      internalID: 453080946
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BigMonitor_3
-      rect:
-        serializedVersion: 2
-        x: 180
-        y: 0
-        width: 60
-        height: 84
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 826efa336fd9a0c4a843fcd6cf3e1f86
-      internalID: -1373367680
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BigMonitor_4
-      rect:
-        serializedVersion: 2
-        x: 240
-        y: 0
-        width: 60
-        height: 84
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2077584addc5b97428160ed44bc1dbee
-      internalID: 1794458993
+      spriteID: 8d106182192b18750800000000000000
+      internalID: 6305517289807938008
       vertices: []
       indices: 
       edges: []
@@ -213,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: b776bb7c8e028ee4fb8f04af965c9d98
+    spriteID: 8600c4c5e0049894cbc2789fd6cd8504
     internalID: 0
     vertices: []
     indices: 
@@ -223,11 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      BigMonitor_0: -4832504461538569561
-      BigMonitor_1: -1047149846
-      BigMonitor_2: 453080946
-      BigMonitor_3: -1373367680
-      BigMonitor_4: 1794458993
+      Chick_0: 3049703459977841537
+      Chick_1: 6305517289807938008
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
