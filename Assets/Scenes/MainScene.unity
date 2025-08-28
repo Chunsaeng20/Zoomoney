@@ -1310,6 +1310,10 @@ MonoBehaviour:
   ResultPanel: {fileID: 0}
   TraderHirePanel: {fileID: 0}
   LoadingPanel: {fileID: 0}
+  gameManager: {fileID: 0}
+  buttonPrefab: {fileID: 0}
+  traderSelectParent: {fileID: 0}
+  traderHireParent: {fileID: 0}
 --- !u!1 &1083939416
 GameObject:
   m_ObjectHideFlags: 0
@@ -1857,7 +1861,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -2397,6 +2401,8 @@ MonoBehaviour:
   trader: {fileID: 0}
   playerStat: {fileID: 0}
   information: {fileID: 0}
+  MaxTraderNumber: 12
+  MaxTraderSelect: 6
   currentTurn: 0
   isGameOver: 0
   gameState: 1

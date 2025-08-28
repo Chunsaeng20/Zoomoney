@@ -22,6 +22,7 @@ public class StockInformation
     {
         PreviousStockPrice = new List<float>();
     }
+
     // 새로운 현재 가격으로 교체
     public void ReplaceCurrentStockPrice(float NewStockPrice)
     {
@@ -33,7 +34,7 @@ public class StockInformation
     public void Flush()
     {
         PreviousStockPrice.Clear();
-        CurrentStockPrice = 0;
+        CurrentStockPrice = initialStockPrice;
     }
 }
 
