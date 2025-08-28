@@ -45,29 +45,51 @@ public class GameManager : MonoBehaviour
         switch (gameState)
         {
             case GameState.INIT:
+                Debug.Log(gameState);
                 UIManager.LoadCanvas(gameState);
-                gameState = GameState.NONE;
+                gameState = GameState.BEGINTURN;
+                
                 break;
             case GameState.BEGINTURN:
+                Debug.Log(gameState);
                 infoList.Clear();
                 // 새로운 정보 생성하기
                 infoList = information.GetRandomInformation();
 
                 UIManager.LoadCanvas(gameState);
                 gameState = GameState.SELECTINFORMATION;
+                foreach (Info i in infoList)
+                {
+                    Debug.Log(i.Corporation);
+                }
                 break;
             case GameState.SELECTINFORMATION:
+                Debug.Log(gameState);
                 UIManager.LoadCanvas(gameState);
                 gameState = GameState.SELECTTRADER;
                 break;
             case GameState.SELECTTRADER:
+                Debug.Log(gameState);
+
+                Debug.Log("1");
                 CalculateNewStockPrice();
+                Debug.Log("2");
                 CalculateCurrentTurnProfit();
+
+                foreach (StockInformation i in stock.stockList)
+                {
+                    Debug.Log(i.CurrentStockPrice);
+                }
+                foreach (TraderInfo i in trader.traderList)
+                {
+                    Debug.Log(i.traderName);
+                }
                 
                 UIManager.LoadCanvas(gameState);
                 gameState = GameState.PLAYTURN;
                 break;
             case GameState.PLAYTURN:
+                Debug.Log(gameState);
                 // 게임 오버 여부 계산하기
                 IsGameOver();
 
@@ -75,8 +97,9 @@ public class GameManager : MonoBehaviour
                 gameState = GameState.RESULT;
                 break;
             case GameState.RESULT:
+                Debug.Log(gameState);
                 // 게임 오버 여부 확인하기
-                if(isGameOver)
+                if (isGameOver)
                 {
                     // 게임 오버 창 로딩하기
                     gameState = GameState.FINISH;
@@ -87,17 +110,23 @@ public class GameManager : MonoBehaviour
                 gameState = GameState.HIRETRADER;
                 break;
             case GameState.HIRETRADER:
+                Debug.Log(gameState);
                 // 새로운 트레이더 생성
                 List<TraderInfo> newTraderList = trader.TwoInfoGenerate();
+
+                Debug.Log(newTraderList[0].traderName);
+                Debug.Log(newTraderList[1].traderName);
+
                 // 트레이더 고용
-                trader.enterTheTraderList();
-                // 트레이더 해고
                 trader.HireTheTraderList();
+                // 트레이더 해고
+                trader.FireTheTraderList();
 
                 UIManager.LoadCanvas(gameState);
                 gameState = GameState.BEGINTURN;
                 break;
             case GameState.FINISH:
+                Debug.Log(gameState);
                 gameState = GameState.INIT;
                 UIManager.LoadCanvas(gameState);
                 break;
@@ -114,7 +143,7 @@ public class GameManager : MonoBehaviour
             string stockName = stockInformation.ID;
 
             // 이전 주식 가격 조회
-            float previousStockPrice = stockInformation.PreviousStockPrice[stock.stockList.Count - 1];
+            float previousStockPrice = stockInformation.CurrentStockPrice;
 
             // 현재 턴 주식 정보 조회
             float direction = 0f;
@@ -157,7 +186,7 @@ public class GameManager : MonoBehaviour
         foreach(TraderInfo traderInfo in trader.traderList)
         {
             // 현재 턴에 참여한 트레이터만 수익 계산
-            if(traderInfo.isParticipate)
+            if(traderInfo.flag == TraderFlag.SELECT)
             {
                 // 트레이더의 체력 감소
                 traderInfo.stamina -= 1;
@@ -200,7 +229,7 @@ public class GameManager : MonoBehaviour
                     buyChance *= 100f;
                     if(buyChance >= Random.Range(0f, 100f))
                     {
-                        currentTurnProfit += (stockInformation.CurrentStockPrice - stockInformation.PreviousStockPrice[stockInformation.PreviousStockPrice.Count - 1]);
+                        currentTurnProfit += (stockInformation.CurrentStockPrice - stockInformation.PreviousStockPrice[^1]);
                     }
                 }
 
