@@ -45,51 +45,48 @@ public class GameManager : MonoBehaviour
         switch (gameState)
         {
             case GameState.INIT:
-                Debug.Log(gameState);
+                //Debug.Log(gameState);
                 UIManager.LoadCanvas(gameState);
                 gameState = GameState.BEGINTURN;
                 
                 break;
             case GameState.BEGINTURN:
-                Debug.Log(gameState);
+                //Debug.Log(gameState);
                 infoList.Clear();
                 // 새로운 정보 생성하기
                 infoList = information.GetRandomInformation();
 
                 UIManager.LoadCanvas(gameState);
                 gameState = GameState.SELECTINFORMATION;
-                foreach (Info i in infoList)
+                /*foreach (Info i in infoList)
                 {
                     Debug.Log(i.Corporation);
-                }
+                }*/
                 break;
             case GameState.SELECTINFORMATION:
-                Debug.Log(gameState);
+                //Debug.Log(gameState);
                 UIManager.LoadCanvas(gameState);
                 gameState = GameState.SELECTTRADER;
                 break;
             case GameState.SELECTTRADER:
-                Debug.Log(gameState);
-
-                Debug.Log("1");
+                //Debug.Log(gameState);
                 CalculateNewStockPrice();
-                Debug.Log("2");
                 CalculateCurrentTurnProfit();
-
-                foreach (StockInformation i in stock.stockList)
+                
+                /*foreach (StockInformation i in stock.stockList)
                 {
                     Debug.Log(i.CurrentStockPrice);
                 }
                 foreach (TraderInfo i in trader.traderList)
                 {
                     Debug.Log(i.traderName);
-                }
+                }*/
                 
                 UIManager.LoadCanvas(gameState);
                 gameState = GameState.PLAYTURN;
                 break;
             case GameState.PLAYTURN:
-                Debug.Log(gameState);
+                //Debug.Log(gameState);
                 // 게임 오버 여부 계산하기
                 IsGameOver();
 
@@ -97,7 +94,7 @@ public class GameManager : MonoBehaviour
                 gameState = GameState.RESULT;
                 break;
             case GameState.RESULT:
-                Debug.Log(gameState);
+                //Debug.Log(gameState);
                 // 게임 오버 여부 확인하기
                 if (isGameOver)
                 {
@@ -106,16 +103,21 @@ public class GameManager : MonoBehaviour
                     UIManager.LoadCanvas(gameState);
                     break;
                 }
+
+                foreach (TraderInfo i in trader.traderList)
+                {
+                    i.flag = TraderFlag.NONE;
+                }
                 UIManager.LoadCanvas(gameState);
                 gameState = GameState.HIRETRADER;
                 break;
             case GameState.HIRETRADER:
-                Debug.Log(gameState);
+                //Debug.Log(gameState);
                 // 새로운 트레이더 생성
                 List<TraderInfo> newTraderList = trader.TwoInfoGenerate();
 
-                Debug.Log(newTraderList[0].traderName);
-                Debug.Log(newTraderList[1].traderName);
+                //Debug.Log(newTraderList[0].traderName);
+                //Debug.Log(newTraderList[1].traderName);
 
                 // 트레이더 고용
                 trader.HireTheTraderList();
@@ -126,7 +128,7 @@ public class GameManager : MonoBehaviour
                 gameState = GameState.BEGINTURN;
                 break;
             case GameState.FINISH:
-                Debug.Log(gameState);
+                //Debug.Log(gameState);
                 gameState = GameState.INIT;
                 UIManager.LoadCanvas(gameState);
                 break;
@@ -160,7 +162,7 @@ public class GameManager : MonoBehaviour
             }
 
             // 가격 변동량 계산
-            float priceChange = previousStockPrice * direction * volatility;
+            float priceChange = previousStockPrice * direction * volatility * 0.01f;
 
             // 새로운 가격 계산
             float newStockPrice = previousStockPrice + priceChange;

@@ -23,9 +23,9 @@ public class PlayerStat : MonoBehaviour
         int staminaIncrease = 1;
         foreach (TraderInfo trader in traderManager.traderList)
         {
-            // 만약 트레이더가 고용(isHire)되었고, 투자에 참여(isParticipate)했다면
+            // 만약 트레이더가 투자에 참여했다면
             // -> 현재 턴에 내 덱에 있는 트레이더들
-            if (trader.isHire && trader.isParticipate)
+            if (trader.flag == TraderFlag.SELECT)
             {
                 // 해당 트레이더의 체력(stamina)을 1 증가시킵니다.
                 trader.stamina += staminaIncrease;
