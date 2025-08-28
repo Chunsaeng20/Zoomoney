@@ -2,50 +2,322 @@
     "information":[
         {
             "Corporation":"냥비디아",
-            "HeadLine":"냥비디아, 배임/횡령으로 압수수색", 
-            "Content":"냥비디아의 경영진이 배임 및 횡령 혐의로 검찰의 압수수색을 받았습니다.",
+            "HeadLine":"냥비디아, 차세대 ZPU 'RTX 9090' 발표", 
+            "Content":"냥비디아가 압도적인 성능의 신규 그래픽 카드를 발표하며 시장의 기대를 한 몸에 받고 있습니다.",
             "Type":"News",
-            "Volatility":50.72,
+            "Volatility":65.5,
+            "Direction":"Up"
+        },
+        {
+            "Corporation":"냥비디아",
+            "HeadLine":"냥비디아, 주력 칩셋에 심각한 결함 발견 소문", 
+            "Content":"익명의 제보자에 따르면, 냥비디아의 주력 칩셋에서 심각한 발열 결함이 발견되었다는 소문이 돌고 있습니다.",
+            "Type":"Rumor",
+            "Volatility":72.1,
+            "Direction":"Down"
+        },
+        {
+            "Corporation":"팔란디어",
+            "HeadLine":"팔란디어, 국방부와 대규모 데이터 분석 계약 체결", 
+            "Content":"팔란디어가 국방부의 차세대 AI 기반 데이터 분석 플랫폼 구축 사업을 수주했습니다.",
+            "Type":"News",
+            "Volatility":55.0,
+            "Direction":"Up"
+        },
+        {
+            "Corporation":"팔란디어",
+            "HeadLine":"팔란디어, 개인정보 무단 수집 의혹", 
+            "Content":"시민 단체에서 팔란디어의 데이터 수집 방식에 대한 문제를 제기하며 논란이 일고 있습니다.",
+            "Type":"Rumor",
+            "Volatility":48.5,
+            "Direction":"Down"
+        },
+        {
+            "Corporation":"버드미사일",
+            "HeadLine":"버드미사일, 신형 극초음속 미사일 시험 발사 성공", 
+            "Content":"버드미사일이 개발 중인 신형 극초음속 미사일 '버드-1'의 시험 발사에 성공했다고 밝혔습니다.",
+            "Type":"News",
+            "Volatility":78.3,
+            "Direction":"Up"
+        },
+        {
+            "Corporation":"버드미사일",
+            "HeadLine":"버드미사일, 주요 부품 수출 금지 루머", 
+            "Content":"정부 관계자 사이에서 버드미사일의 핵심 부품에 대한 수출 금지 조치가 논의되고 있다는 소문이 있습니다.",
+            "Type":"Rumor",
+            "Volatility":68.9,
+            "Direction":"Down"
+        },
+        {
+            "Corporation":"하마존",
+            "HeadLine":"하마존, 연말 쇼핑 시즌 역대 최고 매출 달성", 
+            "Content":"하마존이 연말 쇼핑 시즌에 역대 최고 매출을 기록하며 유통 시장의 지배력을 과시했습니다.",
+            "Type":"News",
+            "Volatility":45.2,
+            "Direction":"Up"
+        },
+        {
+            "Corporation":"하마존",
+            "HeadLine":"하마존, 반독점법 위반으로 당국 조사 착수", 
+            "Content":"공정위가 하마존의 시장 지배력 남용 혐의에 대해 조사를 시작했다는 소식이 전해졌습니다.",
+            "Type":"Rumor",
+            "Volatility":59.8,
+            "Direction":"Down"
+        },
+        {
+            "Corporation":"구슬",
+            "HeadLine":"구슬, 인간 수준의 대화형 AI '제미니' 공개", 
+            "Content":"구슬이 연례 개발자 컨퍼런스에서 인간과 거의 흡사한 수준의 대화형 AI를 공개해 충격을 주었습니다.",
+            "Type":"News",
+            "Volatility":61.8,
+            "Direction":"Up"
+        },
+        {
+            "Corporation":"구슬",
+            "HeadLine":"구슬, 주력 사업인 광고 수익 감소 우려", 
+            "Content":"경기 침체로 인해 구슬의 핵심 수익원인 온라인 광고 수익이 감소할 것이라는 분석이 나오고 있습니다.",
+            "Type":"Rumor",
+            "Volatility":42.3,
             "Direction":"Down"
         },
         {
             "Corporation":"티렉슬라",
-            "HeadLine":"(IT) 티렉슬라, 신기술 발표", 
-            "Content":"티렉슬라가 새로운 ZPU '캣-텐서 코어'를 발표했습니다.",
+            "HeadLine":"티렉슬라, 완전자율주행 기능 공식 출시", 
+            "Content":"티렉슬라가 드디어 완전자율주행(FSD) 기능을 모든 차량에 공식 배포하기 시작했습니다.",
             "Type":"News",
-            "Volatility":81.2,
+            "Volatility":85.0,
+            "Direction":"Up"
+        },
+        {
+            "Corporation":"티렉슬라",
+            "HeadLine":"티렉슬라, 배터리 공급망 문제로 생산 차질", 
+            "Content":"주요 배터리 공급사의 문제로 티렉슬라의 기가팩토리 생산 라인이 일부 중단되었다는 소문입니다.",
+            "Type":"Rumor",
+            "Volatility":70.5,
+            "Direction":"Down"
+        },
+        {
+            "Corporation":"오리클",
+            "HeadLine":"오리클, 클라우드 사업부문 예상 뛰어넘는 성장세", 
+            "Content":"오리클의 클라우드 사업이 시장 예상치를 뛰어넘는 분기 실적을 발표하며 주가가 급등했습니다.",
+            "Type":"News",
+            "Volatility":35.7,
+            "Direction":"Up"
+        },
+        {
+            "Corporation":"오리클",
+            "HeadLine":"오리클, 경쟁사와 특허 소송전 돌입", 
+            "Content":"오리클이 경쟁사를 상대로 대규모 특허 침해 소송을 제기했다는 소식이 전해졌습니다.",
+            "Type":"Rumor",
+            "Volatility":29.4,
+            "Direction":"Down"
+        },
+        {
+            "Corporation":"우베어",
+            "HeadLine":"우베어, 창사 이래 첫 연간 흑자 달성", 
+            "Content":"우베어가 지속적인 비용 절감과 사업 다각화를 통해 창사 이래 첫 연간 흑자를 기록했습니다.",
+            "Type":"News",
+            "Volatility":48.1,
+            "Direction":"Up"
+        },
+        {
+            "Corporation":"우베어",
+            "HeadLine":"우베어, 드라이버 처우 문제로 대규모 파업 예고", 
+            "Content":"우베어 드라이버 노조가 처우 개선을 요구하며 대규모 파업을 예고했습니다.",
+            "Type":"Rumor",
+            "Volatility":53.6,
+            "Direction":"Down"
+        },
+        {
+            "Corporation":"네이벌",
+            "HeadLine":"네이벌, 신규 웹툰 플랫폼 글로벌 출시", 
+            "Content":"네이벌이 자사의 인기 웹툰을 기반으로 한 새로운 글로벌 플랫폼을 성공적으로 출시했습니다.",
+            "Type":"News",
+            "Volatility":41.2,
+            "Direction":"Up"
+        },
+        {
+            "Corporation":"네이벌",
+            "HeadLine":"네이벌, 대규모 개인정보 유출 사고 발생", 
+            "Content":"네이벌의 데이터베이스가 해킹되어 대규모 개인정보가 유출되었다는 의혹이 제기되었습니다.",
+            "Type":"Rumor",
+            "Volatility":66.6,
+            "Direction":"Down"
+        },
+        {
+            "Corporation":"웨일인터넷",
+            "HeadLine":"웨일인터넷, 포털 검색 점유율 1위 탈환", 
+            "Content":"웨일인터넷이 공격적인 마케팅과 서비스 개편으로 국내 포털 검색 점유율 1위를 탈환했습니다.",
+            "Type":"News",
+            "Volatility":39.9,
+            "Direction":"Up"
+        },
+        {
+            "Corporation":"웨일인터넷",
+            "HeadLine":"웨일인터넷, 메인 서버 화재로 서비스 장애", 
+            "Content":"웨일인터넷의 데이터센터에 화재가 발생해 주요 서비스가 몇 시간 동안 중단되었다는 소문입니다.",
+            "Type":"Rumor",
+            "Volatility":51.3,
+            "Direction":"Down"
+        },
+        {
+            "Corporation":"왈마트",
+            "HeadLine":"왈마트, 친환경 정책으로 ESG 등급 상향", 
+            "Content":"왈마트의 적극적인 친환경 정책이 인정받아 글로벌 ESG 평가 등급이 상향 조정되었습니다.",
+            "Type":"News",
+            "Volatility":25.4,
             "Direction":"Up"
         },
         {
             "Corporation":"왈마트",
-            "HeadLine":"(유통) 왈마트, 생산량 조정 회의 예고", 
-            "Content":"왈마트에서 생산량 조정 회의를 예고했습니다.",
+            "HeadLine":"왈마트, 중국산 제품 불매 운동 확산", 
+            "Content":"왈마트에서 판매되는 일부 제품에 대한 소비자 불매 운동이 온라인을 중심으로 확산되고 있습니다.",
             "Type":"Rumor",
-            "Volatility":95.07,
-            "Direction":"Up"
+            "Volatility":33.8,
+            "Direction":"Down"
         },
         {
-            "Corporation":"하이비",
-            "HeadLine":"(엔터) 하이비, 신규 아이돌 그룹 데뷔 발표", 
-            "Content":"하이비가 새로운 아이돌 그룹 '캣츠'의 데뷔를 발표했습니다.",
+            "Corporation":"코카코알라",
+            "HeadLine":"코카코알라, 신제품 '제로-체리' 전세계적 히트", 
+            "Content":"코카코알라가 출시한 신제품 '제로-체리'가 젊은 층을 중심으로 폭발적인 인기를 끌고 있습니다.",
             "Type":"News",
-            "Volatility":60.5,
+            "Volatility":30.1,
             "Direction":"Up"
         },
         {
-            "Corporation":"버드택배",
-            "HeadLine":"버드택배 물류창고 화재 발생", 
-            "Content":"버드택배의 메인 물류창고 화재로 배송 라인 일부가 정지되었습니다.",
+            "Corporation":"코카코알라",
+            "HeadLine":"코카코알라, 설탕세 도입으로 가격 인상 압박", 
+            "Content":"정부의 설탕세 도입 논의가 본격화되면서 코카코알라의 가격 인상이 불가피할 것이라는 전망이 나옵니다.",
             "Type":"Rumor",
-            "Volatility":75.0,
+            "Volatility":28.7,
+            "Direction":"Down"
+        },
+        {
+            "Corporation":"나이키위",
+            "HeadLine":"나이키위, 유명 축구선수와 종신 계약 체결", 
+            "Content":"나이키위가 세계적인 축구 스타와 종신 후원 계약을 체결하며 브랜드 가치를 높였습니다.",
+            "Type":"News",
+            "Volatility":40.5,
+            "Direction":"Up"
+        },
+        {
+            "Corporation":"나이키위",
+            "HeadLine":"나이키위, 동남아 공장 아동 노동 착취 의혹", 
+            "Content":"인권 단체에서 나이키위의 동남아시아 하청 공장에 대한 아동 노동 착취 의혹을 제기했습니다.",
+            "Type":"Rumor",
+            "Volatility":55.9,
             "Direction":"Down"
         },
         {
             "Corporation":"신세개",
-            "HeadLine":"신세개, 경영권 분쟁 조짐", 
-            "Content":"신세개 최대주주간 경영권 분쟁 조짐을 보이고 있습니다.",
+            "HeadLine":"신세개, 초대형 복합 쇼핑몰 '스타월드' 개장", 
+            "Content":"신세개가 수도권에 아시아 최대 규모의 복합 쇼핑몰 '스타월드'를 성공적으로 개장했습니다.",
+            "Type":"News",
+            "Volatility":38.8,
+            "Direction":"Up"
+        },
+        {
+            "Corporation":"신세개",
+            "HeadLine":"신세개, 오너 일가 경영권 분쟁 심화", 
+            "Content":"신세개 그룹의 오너 일가 간 경영권 분쟁이 법적 다툼으로 번질 조짐을 보이고 있습니다.",
             "Type":"Rumor",
-            "Volatility":45.0,
+            "Volatility":49.2,
+            "Direction":"Down"
+        },
+        {
+            "Corporation":"버드택배",
+            "HeadLine":"버드택배, AI 기반 물류 시스템 도입으로 효율 200% 향상", 
+            "Content":"버드택배가 도입한 AI 기반 자동화 물류 시스템이 성공적으로 안착하며 배송 효율이 크게 증가했습니다.",
+            "Type":"News",
+            "Volatility":43.7,
+            "Direction":"Up"
+        },
+        {
+            "Corporation":"버드택배",
+            "HeadLine":"버드택배, 택배기사 노조 총파업 돌입", 
+            "Content":"버드택배 노조가 처우 개선을 요구하며 무기한 총파업에 돌입했습니다.",
+            "Type":"Rumor",
+            "Volatility":62.4,
+            "Direction":"Down"
+        },
+        {
+            "Corporation":"ZYP",
+            "HeadLine":"ZYP, 신인 걸그룹 '원더캣츠' 빌보드 차트 진입", 
+            "Content":"ZYP가 프로듀싱한 신인 걸그룹 '원더캣츠'가 데뷔곡으로 빌보드 핫100 차트에 진입하는 쾌거를 이뤘습니다.",
+            "Type":"News",
+            "Volatility":58.2,
+            "Direction":"Up"
+        },
+        {
+            "Corporation":"ZYP",
+            "HeadLine":"ZYP, 메인 프로듀서 표절 논란 휩싸여", 
+            "Content":"ZYP의 메인 프로듀서가 과거 발표곡에 대한 표절 논란에 휩싸이며 활동을 중단했습니다.",
+            "Type":"Rumor",
+            "Volatility":67.3,
+            "Direction":"Down"
+        },
+        {
+            "Corporation":"디쥐니",
+            "HeadLine":"디쥐니, 신작 애니메이션 전세계 박스오피스 1위", 
+            "Content":"디쥐니의 신작 애니메이션 '겨울왕국 3'가 개봉 첫 주 전세계 박스오피스 1위를 석권했습니다.",
+            "Type":"News",
+            "Volatility":47.6,
+            "Direction":"Up"
+        },
+        {
+            "Corporation":"디쥐니",
+            "HeadLine":"디쥐니, OTT 서비스 구독자 수 감소세 전환", 
+            "Content":"경쟁 심화로 인해 디쥐니의 OTT 서비스 구독자 수가 처음으로 감소세로 돌아섰다는 분석이 나왔습니다.",
+            "Type":"Rumor",
+            "Volatility":41.8,
+            "Direction":"Down"
+        },
+        {
+            "Corporation":"넷폭스",
+            "HeadLine":"넷폭스, 오리지널 시리즈 '오징어게임2' 역대급 흥행", 
+            "Content":"넷폭스가 공개한 오리지널 시리즈 '오징어게임2'가 전세계적인 신드롬을 일으키며 역대급 흥행을 기록했습니다.",
+            "Type":"News",
+            "Volatility":71.4,
+            "Direction":"Up"
+        },
+        {
+            "Corporation":"넷폭스",
+            "HeadLine":"넷폭스, 계정 공유 유료화 정책에 사용자 반발", 
+            "Content":"넷폭스의 계정 공유 유료화 정책에 대한 사용자들의 반발이 거세지며 대규모 구독 취소 움직임이 보입니다.",
+            "Type":"Rumor",
+            "Volatility":63.7,
+            "Direction":"Down"
+        },
+        {
+            "Corporation":"YZ",
+            "HeadLine":"YZ, 간판 아이돌 그룹 월드 투어 매진 행렬", 
+            "Content":"YZ의 간판 아이돌 그룹이 북미와 유럽에서 진행하는 월드 투어 전석 매진을 기록했습니다.",
+            "Type":"News",
+            "Volatility":52.8,
+            "Direction":"Up"
+        },
+        {
+            "Corporation":"YZ",
+            "HeadLine":"YZ, 주력 아티스트 재계약 불발설", 
+            "Content":"소속사의 주력 아티스트가 재계약 협상에 난항을 겪고 있다는 소문이 증권가를 중심으로 퍼지고 있습니다.",
+            "Type":"Rumor",
+            "Volatility":69.1,
+            "Direction":"Down"
+        },
+        {
+            "Corporation":"하이비",
+            "HeadLine":"하이비, 글로벌 팬 커뮤니티 플랫폼 성공적 런칭", 
+            "Content":"하이비가 자체 개발한 글로벌 팬 커뮤니티 플랫폼이 1억 가입자를 돌파하며 성공적으로 안착했습니다.",
+            "Type":"News",
+            "Volatility":49.5,
+            "Direction":"Up"
+        },
+        {
+            "Corporation":"하이비",
+            "HeadLine":"하이비, 공식 굿즈 품질 논란으로 팬들 불매 운동", 
+            "Content":"새로 출시된 공식 굿즈의 낮은 품질에 실망한 팬들이 SNS를 중심으로 불매 운동을 벌이고 있습니다.",
+            "Type":"Rumor",
+            "Volatility":38.2,
             "Direction":"Down"
         }
     ]
