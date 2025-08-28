@@ -42,6 +42,7 @@ public class TraderInfo // 트레이더의 정보를 담는 클래스
     public PassiveSkill passiveSkill; // 패시브
     public string skillScript; // 패시브 스킬 설명
     public TraderFlag flag;
+    public int imageId;
 }
 public class Trader : MonoBehaviour
 {
@@ -83,8 +84,9 @@ public class Trader : MonoBehaviour
         }
         newTrader.confidence = 0f; // 범위 0~100
         newTrader.profit = 1f;
-        return newTrader;
 
+        newTrader.imageId = Random.Range(0, 6);
+        return newTrader;
     }
 
     public float SetMoneyByTrendency(Trendency tr) // 투자 성향에 따른 투자 금액 비율 설정

@@ -32,7 +32,7 @@ public class PlayerStat : MonoBehaviour
 
                 // 콘솔에 변경된 내용을 출력하여 잘 작동하는지 확인합니다. (선택 사항)
                 Debug.Log(trader.stamina);
-            }*/
+            }
         }
     }
 
