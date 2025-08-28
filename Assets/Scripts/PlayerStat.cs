@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerStat : MonoBehaviour
@@ -41,9 +42,15 @@ public class PlayerStat : MonoBehaviour
         informationManager.OnlyNews = true; // 다음 턴 정보는 뉴스만 보여주기
     }
     //스킬 3 : 이번 턴 레버리지 2배, 다음 턴에 다시 1배
-    public void Layoff()
+    public IEnumerator Layoff()
     {
+        Leverage *= 2; // 이번 턴 레버리지 2배
+                       //현재 턴
+        int currentTurn = gameManager.currentTurn;
 
+        //다음 턴이 올 때 까지 대기
+        yield return new WaitUntil(() => gameManager.currentTurn == currentTurn + 1);
+        Leverage /= 2; // 다음 턴에 다시 1배
     }
 
 }
