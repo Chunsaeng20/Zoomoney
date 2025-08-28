@@ -68,7 +68,7 @@ public class Trader : MonoBehaviour
         newTrader.isParticipate = false;
         newTrader.trendencyPerMoney = SetMoneyByTrendency(newTrader.traderTendency); // 투자 성향에 따른 투자 금액 비율 설정
         // 3. 기본 능력치 설정
-        newTrader.salary = Random.Range(3000, 6000);
+        newTrader.salary = Random.Range(300000, 600000);
         if (newTrader.passiveSkill == PassiveSkill.허약)
         {
             newTrader.stamina = 2;
