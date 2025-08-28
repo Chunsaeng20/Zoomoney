@@ -120,29 +120,4 @@ public class Information : MonoBehaviour
             return resultList;
         }
     }
-
-
-
-
-
-    //test함수
-    public List<Info> TestGetRandomInformation()
-    {
-        var result = GetRandomInformation();
-        Debug.Log($"--- 테스트 결과: {result.Count}개의 정보 ---");
-        foreach (var info in result)
-        {
-            // 각 정보(info)의 헤드라인을 개별적으로 출력합니다.
-            Debug.Log($"회사: {info.Corporation}, 헤드라인: {info.HeadLine}");
-        }
-
-        return result;
-    }
-    /*
-    test
-    void Start()
-    {
-        TestGetRandomInformation();
-    }
-    */
 }

@@ -3,7 +3,6 @@ using DG.Tweening;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
-using Unity.VisualScripting;
 
 public class UIManager : MonoBehaviour
 {
@@ -15,7 +14,6 @@ public class UIManager : MonoBehaviour
     public GameObject TraderSelectCanvas;
     public GameObject ResultCanvas;
     public GameObject TraderHireCanvas;
-    public GameObject LoadingCanvas;
 
     public GameObject PlayPanel;
     public GameObject StartPanel;
@@ -23,7 +21,6 @@ public class UIManager : MonoBehaviour
     public GameObject TraderSelectPanel;
     public GameObject ResultPanel;
     public GameObject TraderHirePanel;
-    public GameObject LoadingPanel;
 
     public GameManager gameManager;
 
@@ -51,6 +48,8 @@ public class UIManager : MonoBehaviour
 
     public void LoadCanvas(GameState gameState)
     {
+        // debug
+        return;
         switch (gameState)
         {
             case GameState.INIT:
@@ -196,7 +195,6 @@ public class UIManager : MonoBehaviour
         TraderSelectCanvas.SetActive(false);
         ResultCanvas.SetActive(false);
         TraderHireCanvas.SetActive(false);
-        LoadingCanvas.SetActive(false);
     }
 
     #endregion

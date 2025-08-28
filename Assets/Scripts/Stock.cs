@@ -8,6 +8,7 @@ public enum Sectors
     유통 = 1,
     엔터 = 2,
 }
+
 [System.Serializable]
 public class StockInformation
 {
@@ -48,15 +49,14 @@ public class Stock : MonoBehaviour
 {
     public List<StockInformation> stockList;
 
-    // 초기화 함수 필요
     void Awake()
     {
         string fullPath = Path.Combine(Application.dataPath, "Scripts", "StockData.json");
         // 파일을 읽기 전에 존재하는지 먼저 확인합니다.
         if (File.Exists(fullPath))
         {
-          
             string jsonString = File.ReadAllText(fullPath);
+
             // 정의한 래퍼 클래스(StockData)를 사용하여 JSON을 파싱합니다.
             StockData loadedData = JsonUtility.FromJson<StockData>(jsonString);
 
