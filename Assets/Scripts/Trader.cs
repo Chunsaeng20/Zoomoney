@@ -52,7 +52,7 @@ public class Trader : MonoBehaviour
     public int counter = 0;
 
 
-    void Start()
+    void Awake()
     {
         traderList.Add(generateTraders());
     }
