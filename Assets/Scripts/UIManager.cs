@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour
     public Transform traderSelectParent;
     public Transform traderHireParent;
 
+    public GameObject ScenarioCanvas;
     #endregion
 
     #region User Methods
