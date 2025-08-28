@@ -42,6 +42,8 @@ public class Information : MonoBehaviour
     //전체 정보 리스트
     public List<Info> allInformation = new List<Info>();
 
+    public bool OnlyNews = false; //턴 마다 제공되는 정보는 뉴스와 루머가 섞여있음 -> 스킬 사용시 뉴스만 제공
+
     private void Awake()
     {
         // Application.dataPath는 Assets 폴더까지의 경로를 의미합니다.
@@ -72,23 +74,57 @@ public class Information : MonoBehaviour
             return new List<Info>();
         }
 
-        // 1. 회사 이름(Corporation)을 기준으로 모든 정보를 그룹화합니다.
-        var infoByCompany = allInformation.GroupBy(info => info.Corporation);
-
-        var resultList = new List<Info>();
-
-        // 2. 각 회사 그룹을 순회하며, 그룹 내에서 정보 1개를 무작위로 선택합니다.
-        foreach (var group in infoByCompany)
+        if (OnlyNews)//스킬 사용했을 때, 기업별로 랜덤 뉴스 1개씩만 선택해서 보여줌
         {
-            // 그룹 내에서 랜덤 인덱스를 뽑습니다.
-            int randomIndex = Random.Range(0, group.Count());
-            // 해당 인덱스의 Info 객체를 결과 리스트에 추가합니다.
-            resultList.Add(group.ElementAt(randomIndex));
-        }
+            // 1. News만 필터링
+            var allNews = allInformation.Where(info => info.Type == "News");
 
-        // 3. 각 회사별 정보가 1개씩 담긴 최종 리스트를 반환합니다.
-        return resultList;
+            // 2. 필터링된 뉴스들을 회사 이름(Corporation) 기준으로 그룹화합니다.
+            var newsByCompany = allNews.GroupBy(info => info.Corporation);
+
+            var resultList = new List<Info>();
+
+            // 3. 각 회사 그룹을 순회하며, 그룹 내에서 뉴스 1개를 무작위로 선택합니다.
+            foreach (var group in newsByCompany)
+            {
+                // 해당 회사에 뉴스가 하나라도 있는지 확인합니다.
+                if (group.Any())
+                {
+                    int randomIndex = Random.Range(0, group.Count());
+                    resultList.Add(group.ElementAt(randomIndex));
+                }
+            }
+
+            // 4. 중요: 스킬 효과는 다음 한 턴에만 적용되므로, 플래그를 다시 false로 되돌립니다.
+            OnlyNews = false;
+
+            return resultList;
+        }
+        else
+        {
+            // 1. 회사 이름(Corporation)을 기준으로 모든 정보를 그룹화합니다.
+            var infoByCompany = allInformation.GroupBy(info => info.Corporation);
+
+            var resultList = new List<Info>();
+
+            // 2. 각 회사 그룹을 순회하며, 그룹 내에서 정보 1개를 무작위로 선택합니다.
+            foreach (var group in infoByCompany)
+            {
+                // 그룹 내에서 랜덤 인덱스를 뽑습니다.
+                int randomIndex = Random.Range(0, group.Count());
+                // 해당 인덱스의 Info 객체를 결과 리스트에 추가합니다.
+                resultList.Add(group.ElementAt(randomIndex));
+            }
+
+            // 3. 각 회사별 정보가 1개씩 담긴 최종 리스트를 반환합니다.
+            return resultList;
+        }
     }
+
+
+
+
+
     //test함수
     public List<Info> TestGetRandomInformation()
     {
@@ -99,7 +135,7 @@ public class Information : MonoBehaviour
             // 각 정보(info)의 헤드라인을 개별적으로 출력합니다.
             Debug.Log($"회사: {info.Corporation}, 헤드라인: {info.HeadLine}");
         }
-        
+
         return result;
     }
     /*
