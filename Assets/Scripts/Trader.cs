@@ -48,6 +48,7 @@ public class Trader : MonoBehaviour
 
     public List<TraderInfo> traderList = new List<TraderInfo>();
     public List<TraderInfo> tr2 = new List<TraderInfo>();
+    public int counter = 0;
 
 
     void Start()
@@ -60,7 +61,7 @@ public class Trader : MonoBehaviour
         TraderInfo newTrader = new TraderInfo();
 
         // 1. 투자 성향 및 전문 분야 랜덤 설정
-        newTrader.traderName = "트레이더" + (traderList.Count + 1);
+        newTrader.traderName = "트레이더" + (counter++);
         newTrader.traderTendency = (Trendency)Random.Range(0, 3); //트레이더의 투자 성향 랜덤 설정
         newTrader.sector = (Sectors)Random.Range(0, 3); //트레이더의 전문 분야 랜덤 설정
 

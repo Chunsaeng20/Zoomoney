@@ -70,10 +70,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.SELECTTRADER:
                 Debug.Log(gameState);
-
-                Debug.Log("1");
                 CalculateNewStockPrice();
-                Debug.Log("2");
                 CalculateCurrentTurnProfit();
 
                 foreach (StockInformation i in stock.stockList)
@@ -105,6 +102,11 @@ public class GameManager : MonoBehaviour
                     gameState = GameState.FINISH;
                     UIManager.LoadCanvas(gameState);
                     break;
+                }
+
+                foreach (TraderInfo i in trader.traderList)
+                {
+                    i.flag = TraderFlag.NONE;
                 }
                 UIManager.LoadCanvas(gameState);
                 gameState = GameState.HIRETRADER;
