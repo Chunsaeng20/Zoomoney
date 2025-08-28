@@ -6,7 +6,7 @@ public enum GameState
     NONE = 0,
     INIT = 1,               // 초기 시작 화면
     BEGINTURN = 2,          // 턴 시작 전 준비
-    SELECTINFORMATION = 3,  // 정보 카드 선택 단계
+    SELECTINFORMATION = 3,  // 정보 카드 단계
     SELECTTRADER = 4,       // 트레이더 카드 선택 단계
     PLAYTURN = 5,           // 플레이 화면
     RESULT = 6,             // 결과 화면
@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     public Trader trader;
     public PlayerStat playerStat;
     public Information information;
+    public int MaxTraderNumber = 12;
+    public int MaxTraderSelect = 6;
+    List<Info> infoList = new List<Info>();
 
     // 턴 관리를 위한 변수
     public int currentTurn;         // 현재 턴 수
@@ -42,78 +45,61 @@ public class GameManager : MonoBehaviour
         switch (gameState)
         {
             case GameState.INIT:
-                // 초기 화면 창 로딩하기 -> GM
                 UIManager.LoadCanvas(gameState);
                 gameState = GameState.NONE;
                 break;
             case GameState.BEGINTURN:
-                // 새로운 정보 생성하기 <- Information 클래스
-                information.GetRandomInformation();
+                infoList.Clear();
+                // 새로운 정보 생성하기
+                infoList = information.GetRandomInformation();
 
-                // 정보 선택 창 로딩하기 -> Information 정보 필요
-
-                // 게임 상태 변이
+                UIManager.LoadCanvas(gameState);
                 gameState = GameState.SELECTINFORMATION;
                 break;
             case GameState.SELECTINFORMATION:
-                // 트레이더 선택 창 로딩하기 -> Trader 정보 필요
-
-                // 게임 상태 변이
+                UIManager.LoadCanvas(gameState);
                 gameState = GameState.SELECTTRADER;
                 break;
             case GameState.SELECTTRADER:
-                // 선택한 트레이더 저장하기 -> GM
-                // 플래그로 구분
-
-                // 현재 턴 결과 계산하기 -> GM
-
-                // 플레이 화면 창 로딩하기 -> GM
-
-                // 게임 상태 변이
+                CalculateNewStockPrice();
+                CalculateCurrentTurnProfit();
+                
+                UIManager.LoadCanvas(gameState);
                 gameState = GameState.PLAYTURN;
                 break;
             case GameState.PLAYTURN:
-                // 게임 오버 여부 계산하기 -> GM
+                // 게임 오버 여부 계산하기
                 IsGameOver();
 
-                // 결과 화면 창 로딩하기 -> GM
-
-                // 게임 상태 변이
+                UIManager.LoadCanvas(gameState);
                 gameState = GameState.RESULT;
                 break;
             case GameState.RESULT:
-                // 게임 오버 여부 확인하기 -> GM
+                // 게임 오버 여부 확인하기
                 if(isGameOver)
                 {
-                    // 게임 오버 창 로딩하기 -> GM
+                    // 게임 오버 창 로딩하기
                     gameState = GameState.FINISH;
+                    UIManager.LoadCanvas(gameState);
                     break;
                 }
-
-                // 새로운 트레이더 리스트 생성하기 -> 리스트 반환
-
-                // 트레이더 고용 창 로딩하기 -> GM
-
-                // 게임 상태 변이
+                UIManager.LoadCanvas(gameState);
                 gameState = GameState.HIRETRADER;
                 break;
             case GameState.HIRETRADER:
-                // 1. 새로운 트레이더 리스트 받기
-                // 고용한 트레이더 저장하기 -> GM
+                // 새로운 트레이더 생성
+                List<TraderInfo> newTraderList = trader.TwoInfoGenerate();
+                // 트레이더 고용
+                trader.enterTheTraderList();
+                // 트레이더 해고
+                trader.HireTheTraderList();
 
-                // 2. 기존 트레이더 리스트 받기
-                // 해고한 트레이더 삭제하기 -> GM
-
-                // 다음 턴 로딩 창 로딩하기 -> GM
-
-                // 게임 상태 변이
+                UIManager.LoadCanvas(gameState);
                 gameState = GameState.BEGINTURN;
                 break;
             case GameState.FINISH:
-                // 메인 화면 창 로딩하기 -> GM
-
-                // 게임 상태 변이
                 gameState = GameState.INIT;
+                UIManager.LoadCanvas(gameState);
                 break;
         }
     }
@@ -173,6 +159,9 @@ public class GameManager : MonoBehaviour
             // 현재 턴에 참여한 트레이터만 수익 계산
             if(traderInfo.isParticipate)
             {
+                // 트레이더의 체력 감소
+                traderInfo.stamina -= 1;
+
                 // 트레이더의 현재 턴 수익
                 float currentTurnProfit = 0f;
 
@@ -230,9 +219,15 @@ public class GameManager : MonoBehaviour
                     currentTurnProfit *= Random.Range(2f, 10f);
                 }
 
+                // 현재 턴 플레이어 수익에 더함
                 currentTurnPlayerProfit += currentTurnProfit;
+
+                // 최종 수익 저장
+                traderInfo.profit = currentTurnProfit;
             }
         }
+
+        playerStat.AddCurrentTurnProfitToTotalMoney(currentTurnPlayerProfit);
     }
 
     // (턴 로직) 게임 오버 여부 확인
@@ -262,11 +257,6 @@ public class GameManager : MonoBehaviour
     public void OnValidate()
     {
         gameState = GameState.INIT;
-    }
-
-    public void Update()
-    {
-        ManageTurn();
     }
 
     #endregion
